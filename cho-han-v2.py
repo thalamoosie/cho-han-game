@@ -21,6 +21,7 @@ japaneseNumbers = {1:"ICHI", 2:"NI", 3:"SAN", 4:"SHI", 5:"GO", 6:"ROKU", 7:"SHIC
 affirmativeResponses = ["Y", "N"]
 difficultyResponses = ["A", "B", "C"]
 evenOrOddResponses = ["CHO", "HAN"]
+insults = ["YARO", "BAKA", "DINGUS", "STUPID", "MANBABY", "FUCK YOU", "DUMB"]
 
 # Different purse difficulties
 purse = 0
@@ -110,11 +111,20 @@ while game:
         if pot.upper() == "Q":
             print("Ason de kure te, arigato!")
             sys.exit()
-        elif pot.upper() == "YARO" or pot.upper() == "BAKA":
+        elif pot.upper() in insults:
             insultCounter += 1
-            movingText("NANI!?")
+            movingText("NANI!\n")
             if insultCounter >= 3:
-                movingText("I think you've had enough sake for one night. Get out!")
+                movingText("I think you've had enough sake for one night. Get out!\n")
+                print(""" 
+ _______  _______  __   __  _______   _______  __   __  _______  ______    __  
+|       ||   _   ||  |_|  ||       | |       ||  | |  ||       ||    _ |  |  | 
+|    ___||  |_|  ||       ||    ___| |   _   ||  |_|  ||    ___||   | ||  |  | 
+|   | __ |       ||       ||   |___  |  | |  ||       ||   |___ |   |_||_ |  | 
+|   ||  ||       ||       ||    ___| |  |_|  ||       ||    ___||    __  ||__| 
+|   |_| ||   _   || ||_|| ||   |___  |       | |     | |   |___ |   |  | | __  
+|_______||__| |__||_|   |_||_______| |_______|  |___|  |_______||___|  |_||__| 
+""")
                 sys.exit()
         elif not pot.isdecimal():
             print("Please enter a numeric value for your mon wager.")
@@ -128,10 +138,9 @@ while game:
     die2 = random.randint(1,6)
 
     print(""" The dealer grabs a bamboo cup and begins to shake the dice around inside for what feels like an eternity.
-There is a slight thud as he slams the cup on to the table before you. His hand is still gripping the cup, keeping the results covered.
-It is time for you to bet.\n
+There is a slight thud as he slams the cup on to the table before you. His hand is still gripping the cup, keeping the results covered. It is time for you to bet.\n
 """)
-    movingText("What is your guess, nakama?\n")
+    movingText("What is your guess, nakama?")
     movingText("    CHO (Even) -or- HAN (Odd)?\n")
 
     while True:
