@@ -43,11 +43,14 @@ print("""
      /_____/ \__,_//_/|_| \__,_/ \___//_/ /_//_/   \n""")
 print("An exciting game of dice and chance.\n")
 
+
+#=============================================
+# Main Game Loop
+#=============================================
+while game:
 # ==============================================
 # Game Introduction & Explanation of Rules
 #===============================================
-
-while game:
 # CHOOSE DIFFICULTY
     difficultyChoice = True
 
@@ -144,11 +147,21 @@ It is time for you to bet.\n
     print(f"    {japaneseNumbers[die1]} - {japaneseNumbers[die2]} ")
     print(f"     {die1}  -  {die2} ")
 
-    winLoss = checkEvenRoll(die1, die2)
-    resultPic1 = drawDice(die1)
-    resultPic2 = drawDice(die2)
+    even = checkEvenRoll(die1, die2)
+    if even:
+        correctBet = "CHO"
+    else:
+        correctBet = "HAN"
 
-    print(f"{resultPic1}  +  {resultPic2}")
+    playerWon = playerBet == correctBet
+
+    if playerWon:
+        movingText(f"You won! You take {pot} mon")
+        purse += pot
+
+
+    drawDice(die1, die2)
+
     print(f"Total: {die1 + die2}")
 
 
@@ -158,7 +171,5 @@ It is time for you to bet.\n
 
 
 
-#=============================================
-# Main Game Loop
-#=============================================
+
 
